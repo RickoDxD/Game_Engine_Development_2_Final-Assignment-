@@ -65,8 +65,6 @@ void World::buildScene(States::ID stateID)
 	mBackground->setVelocity(0.0f, - 0.5);
 	mSceneGraph->attachChild(std::move(backgroundSprite));
 
-	LPCWSTR msgbuf = L"Game World building Scene\n";
-	OutputDebugString(msgbuf);
 
 	mSceneGraph->build(stateID);
 }

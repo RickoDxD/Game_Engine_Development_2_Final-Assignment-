@@ -42,10 +42,6 @@ void SceneNode::update(const GameTimer& gt)
 void SceneNode::updateCurrent(const GameTimer& gt)
 {
 	if (!mIsVisualized) return;
-
-	LPCWSTR msgbuf = L"Updating Scene Node\n";
-	OutputDebugString(msgbuf);
-
 	XMFLOAT2 mV;
 	mV.x = mVelocity.x * gt.DeltaTime();
 	mV.y = mVelocity.y * gt.DeltaTime();
@@ -77,10 +73,6 @@ void SceneNode::draw(Game* game)
 void SceneNode::drawCurrent(Game* game)
 {
 	if (!mIsVisualized) return;
-
-	LPCWSTR msgbuf = L"Drawing Scene Node\n";
-	OutputDebugString(msgbuf);
-
 	UINT objCBByteSize = d3dUtil::CalcConstantBufferByteSize(sizeof(ObjectConstants));
 	UINT matCBByteSize = d3dUtil::CalcConstantBufferByteSize(sizeof(MaterialConstants));
 
@@ -193,9 +185,6 @@ void SceneNode::buildCurrent(States::ID stateID)
 
 	if (!mIsVisualized) return;
 
-	LPCWSTR msgbuf = L"Building Scene Node\n";
-	OutputDebugString(msgbuf);
-
 	mGame->getRenderItems().push_back(std::move(render));
 }
 
@@ -273,8 +262,6 @@ void SceneNode::onCommand(const Command& command, const GameTimer& timer)
 {
 	if (command.category & getCategory()){
 		command.action(*this, timer);
-		LPCWSTR msgbuf = L"Player Aircraft scene node executing command\n";
-		OutputDebugString(msgbuf);
 	}
 	for (SceneNode* child : mChildren)
 		child->onCommand(command, timer);

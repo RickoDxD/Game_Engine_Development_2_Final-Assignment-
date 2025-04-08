@@ -34,8 +34,6 @@ void PauseState::buildScene()
 	mQuitPrompt->setScale(1.0, 1.0, 0.2);
 	mMenuBackground->attachChild(mQuitPrompt);
 
-	LPCWSTR msgbuf = L"Building Menu Scene\n";
-	OutputDebugString(msgbuf);
 
 	mMenuBackground->build(stateID);
 }
@@ -73,13 +71,9 @@ void PauseState::handleEvent()
 		switch (mOptionIndex) {
 		case 0:
 			mMenuSelect->setVelocity(XMFLOAT2(0, 2));
-			msgbuf = L"Continue Selected\n";
-			OutputDebugString(msgbuf);
 			break;
 		case 1:
 			mMenuSelect->setVelocity(XMFLOAT2(0, -2));
-			msgbuf = L"Quit Selected\n";
-			OutputDebugString(msgbuf);
 			break;
 		default:
 			break;
@@ -89,14 +83,10 @@ void PauseState::handleEvent()
 	{
 		switch (mOptionIndex) {
 		case 0:
-			msgbuf = L"Switching to Play Scene\n";
 			mContext.window->SetRenderedState(States::ID::Game);
-			OutputDebugString(msgbuf);
 			break;
 		case 1:
-			msgbuf = L"Returning to Title\n";
 			mContext.window->SetRenderedState(States::ID::Title);
-			OutputDebugString(msgbuf);
 			break;
 		default:
 			break;

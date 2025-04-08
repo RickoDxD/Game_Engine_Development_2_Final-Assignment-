@@ -28,16 +28,12 @@ void TitleState::buildScene()
 	mPromptText->setScale(4.0, 1.0, 0.4);
 	mBackgroundSprite->attachChild(mPromptText);
 
-	LPCWSTR msgbuf = L"Building Title Scene\n";
-	OutputDebugString(msgbuf);
 
 	mBackgroundSprite->build(stateID);
 }
 
 void TitleState::draw(Game* game)
 {
-	LPCWSTR msgbuf = L"Drawing Title Scene\n";
-	OutputDebugString(msgbuf);
 	mBackgroundSprite->draw(game);
 }
 
@@ -57,7 +53,5 @@ void TitleState::handleEvent()
 	if (GetAsyncKeyState(VK_RETURN) & 0x8000)
 	{
 		mContext.window->SetRenderedState(States::ID::Menu);
-		LPCWSTR msgbuf =L"Switching to menu scene\n";
-		OutputDebugString(msgbuf);
 	}
 }

@@ -31,8 +31,6 @@ void GameState::handleEvent()
 	if (GetAsyncKeyState(VK_RETURN) & 0x8000)
 	{
 		mContext.window->SetRenderedState(States::ID::Pause);
-		LPCWSTR msgbuf = L"Pausing Game\n";
-		OutputDebugString(msgbuf);
 	}
 }
 
